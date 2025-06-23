@@ -1,2 +1,2 @@
-# hello.py
-print("Hello from Python")
+def test_add():
+    assert 1 + 1 == 2
