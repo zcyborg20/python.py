@@ -1,24 +1,29 @@
-python.py/
-├── Jenkinsfile
-├── requirements.txt   # optional
-└── tests/
-    ├── test_sample.py
-    ├── test_math.py
-    └── test_strings.py
-    
-test_sample.py
-    def test_basic():
-    assert 2 + 2 == 4
+python-multi-test/
+├── app/
+│   └── calculator.py
+├── tests/
+│   ├── test_addition.py
+│   ├── test_subtraction.py
+│   └── test_division.py
+├── requirements.txt
+└── Jenkinsfile
 
-    
-    test_math.py
+    def add(a, b): return a + b
+def subtract(a, b): return a - b
+def divide(a, b): return a / b if b != 0 else None
+
+from app.calculator import add
+
+def test_add():
+    assert add(3, 4) == 7
+
+from app.calculator import subtract
+
 def test_subtract():
-    assert 5 - 3 == 2
+    assert subtract(10, 3) == 7
 
-    
+from app.calculator import divide
 
-    test_strings.py 
-def test_uppercase():
-    assert 'hello'.upper() == 'HELLO'
-
-    
+def test_divide():
+    assert divide(10, 2) == 5
+    assert divide(5, 0) is None
